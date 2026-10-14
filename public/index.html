@@ -7,6 +7,40 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Hello from yoursite!</h1>
+  <header>
+    <h1>Hello from yoursite!</h1>
+    <p class="tagline">Security Workshop demo site</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>It works 🎉</h2>
+      <p>This page is served from the <code>public/</code> folder.</p>
+      <p>Current time: <strong id="clock">—</strong></p>
+      <button id="btn">Click me</button>
+      <p id="count">Clicked 0 times</p>
+    </section>
+
+    <section class="card">
+      <h2>PHP check</h2>
+      <p><a href="info.php">Open info.php</a> (only works when served by PHP)</p>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> My Website</footer>
+
+  <script>
+    const clock = document.getElementById('clock');
+    const tick = () => clock.textContent = new Date().toLocaleTimeString();
+    tick(); setInterval(tick, 1000);
+
+    let n = 0;
+    document.getElementById('btn').addEventListener('click', () => {
+      n++;
+      document.getElementById('count').textContent = `Clicked ${n} time${n === 1 ? '' : 's'}`;
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
